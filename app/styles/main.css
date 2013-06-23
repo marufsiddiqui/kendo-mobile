@@ -24,3 +24,10 @@ body
     color: black;
     padding: 7px;
 }
+
+.btnBlock {
+    display: block;
+    text-align: center;
+    margin: .6em .8em 0;
+    font-size: 1.2em;
+}

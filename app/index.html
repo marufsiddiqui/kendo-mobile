@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
+    <link href="styles/main.css" rel="stylesheet"/>
+
+    <!--<script src="cordova.js"></script>
+    <script src="Plugins/Child%20Browser/childbrowser.js"></script>-->
+</head>
+<body>
+<div data-role="view" id="viewAssets" data-title="Assets" data-layout="baseLayout">
+    <h1>This is Assets view</h1>
+
+    <p>
+        Icenium&trade; enables you to build cross-platform device applications regardless of your
+        development platform by combining the convenience of a local development toolset with the
+        power and flexibility of the cloud.
+    </p>
+</div>
+<div data-role="view" id="viewLeads" data-title="Leads" data-layout="baseLayout">
+    <h1>This is Lead view</h1>
+
+    <p>
+        Icenium&trade; enables you to build cross-platform device applications regardless of your
+        development platform by combining the convenience of a local development toolset with the
+        power and flexibility of the cloud.
+    </p>
+</div>
+<div data-role="view" id="viewHelp" data-title="Help" data-layout="baseLayout">
+    <h1>This is help view</h1>
+
+    <p>
+        Icenium&trade; enables you to build cross-platform device applications regardless of your
+        development platform by combining the convenience of a local development toolset with the
+        power and flexibility of the cloud.
+    </p>
+</div>
+
+<!--loginLayout-->
+<div data-role="layout" data-id="loginLayout">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+</div>
+
+<!--Base Layout-->
+<div data-role="layout" data-id="baseLayout">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-role="button" data-click="app.accountView.viewModel.logout" data-align="right" class="km-button"><span class="km-text">Log Off</span></a>
+        </div>
+    </header>
+
+    <div data-role="footer">
+        <div data-role="tabstrip">
+            <a href="#viewAssets" data-icon="home">Assets</a>
+            <a href="#viewLeads" data-icon="share">Leads</a>
+            <a href="#viewHelp" data-icon="globe">Help</a>
+        </div>
+    </div>
+</div>
+
+<!--Login View-->
+<div data-role="view" id="viewLogin" data-layout="login" data-transition="overlay:down"
+     data-model="app.accountView.viewModel" data-init="app.accountView.loginInit">
+    <div class="wrapper">
+        <ul data-role="listview" data-style="inset" class="loginList">
+            <li>Email <input type="email" id="txtEmail" placeholder="email@example.com" autocapitalize="off"
+                             autocorrect="off" data-bind="value: loginUsername" autofocus/></li>
+            <li>Password<input type="password" id="txtPass" data-bind="value: loginPassword" placeholder="*****"/></li>
+        </ul>
+
+        <ul data-role="listview" data-style="inset">
+            <li><a href="#viewForgotPassword">Forgot Password</a></li>
+            <li><a href="#viewRegister">Request Login</a></li>
+        </ul>
+
+        <a data-bind="click: login" id="login-button" type="button" data-role="button" class="km-button btnBlock"><span
+                class="km-text">Login</span></a>
+
+    </div>
+</div>
+
+<!--Registration View-->
+<div data-role="view" id="viewRegister" data-layout="loginLayout" data-transition="slide" data-title="Request a Login">
+    <div class="wrapper">
+        <ul data-role="listview" data-style="inset" class="loginList">
+            <li>
+                <label for="name">Name</label>
+                <input id="name" type="text"/>
+            </li>
+            <li>
+                <label for="companyName">Company Name</label>
+                <input id="companyName" type="text"/>
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="email@example.com"
+                       autocapitalize="off"
+                       autocorrect="off" autofocus/>
+            </li>
+            <li>
+                <label for="pass">Password</label>
+                <input type="password" id="pass" placeholder="*****"/>
+            </li>
+        </ul>
+
+        <a id="btnRegister" type="button" data-role="button" class="km-button btnBlock"><span class="km-text">Request Login</span></a>
+
+    </div>
+</div>
+
+<!--Forgot Password View-->
+<div data-role="view" id="viewForgotPassword" data-layout="loginLayout" data-transition="slide"
+     data-title="Forgot Password">
+    <div class="wrapper">
+        <ul data-role="listview" data-style="inset" class="loginList">
+            <li>
+                <label for="forgotEmail">Email</label>
+                <input id="forgotEmail" name="forgotEmail" type="email"/>
+            </li>
+        </ul>
+
+        <a id="btnForgotEmailSend" type="button" data-role="button" class="km-button btnBlock"><span class="km-text">Send Password</span></a>
+
+    </div>
+</div>
+
+<!-- Error Views -->
+
+<div data-role="modalview" id="error-view" style="display: none; width: 95%; height: 90%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>Error</span>
+            <a data-click="app.closeErrorModal" data-role="button" data-align="right">Close</a>
+        </div>
+    </div>
+
+    <div class="message"></div>
+</div>
+<!-- Scripts -->
+
+<script data-main="scripts/main.js" src="scripts/require.js"></script>
+</body>
+</html>
